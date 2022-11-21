@@ -203,7 +203,7 @@ pub fn narrowable_rustgc(args: TokenStream, input: TokenStream) -> TokenStream {
         unsafe impl<U: Sync> Sync for #struct_union_id<U> {}
 
         unsafe impl<U: FinalizerSafe> FinalizerSafe for #struct_union_id<U> {}
-        unsafe impl<U: ::std::gc::NoFinalize> ::std::gc::NoFinalize for #struct_union_id<U> {}
+        unsafe impl<U> ::std::gc::FinalizerOptional for #struct_union_id<U> {}
 
         impl<U> ::std::ops::Drop for #struct_union_id<U> {
             fn drop(&mut self) {
